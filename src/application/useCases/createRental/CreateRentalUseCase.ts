@@ -31,15 +31,19 @@ export class CreateRentalUseCase {
             throw new Error("Carro não encontrado.");
         }
 
-        // 3. Verificar disponibilidade do Carro
-        if (!car.available) {
-            throw new Error("Carro indisponível.");
+        // 3. Verificar se o usuário já tem aluguel aberto
+        const userHasOpenRental =
+        await this.rentalRepository.findOpenRentalByUserId(userId);
+
+        if (userHasOpenRental)
+        {
+            throw new Error("Usuário já possui um aluguel em andamento.");
         }
 
-        // 4. Verificar se o usuário já tem aluguel aberto
-        const userHasOpenRental = await this.rentalRepository.findOpenRentalByUserId(userId);
-        if (userHasOpenRental) {
-            throw new Error("Usuário já possui um aluguel em andamento.");
+        // 4. Verificar disponibilidade do carro
+        if (!car.available)
+        {
+            throw new Error("Carro indisponível.");
         }
 
         // 5. Criar a entidade Rental

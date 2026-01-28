@@ -46,9 +46,7 @@ describe("Caso de Uso de Criação de Aluguel", () => {
         carId: "123",
         expectedReturnDate: new Date(),
       })
-    ).rejects.toEqual(
-      new Error("O aluguel deve ter duração mínima de 24 horas.")
-    );
+    ).rejects.toEqual(new Error("O aluguel deve ter duração mínima de 24 horas."));
   });
 
   it("não deve ser capaz de criar um aluguel se o usuário já possuir um em andamento", async () => {
@@ -74,14 +72,12 @@ describe("Caso de Uso de Criação de Aluguel", () => {
           new Date().getTime() + 25 * 60 * 60 * 1000
         ),
       })
-    ).rejects.toEqual(
-      new Error("Usuário já possui um aluguel em andamento.")
-    );
+    ).rejects.toEqual(new Error("Usuário já possui um aluguel em andamento."));
   });
 
   it("não deve ser capaz de alugar um carro indisponível", async () => {
     // carro indisponível
-    const car = new Car("123", "ABC-1234", false); // disponível: false
+    const car = new Car("123", "ABC-1234", false);
     carsRepository.cars.push(car);
 
     await expect(
