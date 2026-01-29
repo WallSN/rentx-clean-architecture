@@ -45,7 +45,7 @@ npm run cli
 
 **Estrutura do projeto (visão geral)**
 
-- `src/adapters`: adaptadores/entrypoints (CLI, HTTP, etc.).
+- `src/adapters`: adaptadores/entrypoints (CLI).
 - `src/application/useCases`: casos de uso e DTOs.
 - `src/domain`: entidades e interfaces de repositório.
 - `src/infra`: container de DI e repositórios (in-memory e Prisma).
