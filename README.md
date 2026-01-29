@@ -34,13 +34,13 @@ npx prisma migrate dev
 - Rodar testes (usa `vitest`):
 
 ```bash
-npm test
+npm run test
 ```
 
-- Executar o adaptador CLI (entrypoint):
+- Executar o adaptador CLI:
 
 ```bash
-npx tsx src/adapters/cli/main.ts
+npm run cli
 ```
 
 **Estrutura do projeto (visão geral)**
