@@ -1,31 +1,22 @@
+import "reflect-metadata";
 import { Container } from "inversify";
-import { TYPES } from "../container/types";
+import { PrismaClient } from "@prisma/client";
 
-// Interfaces
-import { ICarRepository } from "../../domain/repositories/ICarRepository";
+import { prisma } from "../database/prisma/client";
+
 import { IRentalRepository } from "../../domain/repositories/IRentalRepository";
-
-// Implementações concretas
-import { PrismaCarRepository } from "../database/prisma/PrismaCarRepository";
-import { PrismaRentalRepository } from "../database/prisma/PrismaRentalRepository";
-
-// Use Cases
-// (também precisam ser injetáveis se forem resolvidos via container)
-import { CreateRentalUseCase } from "../../application/useCases/createRental/CreateRentalUseCase";
+import { PrismaRentalRepository } from "../../domain/repositories/PrismaRentalRepository";
 
 const container = new Container();
 
-// Configuração dos binds
+// Prisma
 container
-  .bind<ICarRepository>(TYPES.ICarRepository)
-  .to(PrismaCarRepository);
+  .bind<PrismaClient>("PrismaClient")
+  .toConstantValue(prisma);
 
+// Repositórios
 container
-  .bind<IRentalRepository>(TYPES.IRentalRepository)
+  .bind<IRentalRepository>("RentalRepository")
   .to(PrismaRentalRepository);
-
-container
-  .bind<CreateRentalUseCase>(CreateRentalUseCase)
-  .toSelf();
 
 export { container };

@@ -21,7 +21,7 @@ Crie um arquivo `.env` com `DATABASE_URL` antes de rodar comandos do Prisma ou a
 npx prisma generate
 ```
 
-3. (Opcional) Rode migrações:
+3. Rode migrações:
 
 ```bash
 npx prisma migrate deploy
