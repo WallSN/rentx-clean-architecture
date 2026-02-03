@@ -12,16 +12,17 @@
 npm install
 ```
 
-2. Gere o cliente do Prisma (após configurar `DATABASE_URL`):
+2. Variáveis de ambiente
 
 Crie um arquivo `.env` com `DATABASE_URL` antes de rodar comandos do Prisma ou a aplicação.
 
+3. Gere o cliente do Prisma (após configurar `DATABASE_URL`):
 
 ```bash
 npx prisma generate
 ```
 
-3. Rode migrações:
+4. Rode migrações:
 
 ```bash
 npx prisma migrate deploy
