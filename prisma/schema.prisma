@@ -10,7 +10,6 @@ model Car {
   id           String   @id
   licensePlate String
   available    Boolean
-
   rentals      Rental[]
 
   @@map("cars")
@@ -22,7 +21,7 @@ model Rental {
   carId     String
   startDate DateTime
   endDate   DateTime
-
+  
   car       Car      @relation(fields: [carId], references: [id])
 
   @@map("rentals")

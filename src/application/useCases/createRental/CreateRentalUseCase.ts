@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { inject, injectable } from "inversify";
-import { TYPES } from "../../../infra/container/types";
+import { TYPES } from "../../../types";
 import { ICarRepository } from "../../../domain/repositories/ICarRepository";
 import { IRentalRepository } from "../../../domain/repositories/IRentalRepository";
 import { CreateRentalDTO } from "./CreateRentalDTO";
